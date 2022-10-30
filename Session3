@@ -1,0 +1,37 @@
+# STEP 3 - Connecting Pandas DataFrames with Database
+
+
+###  Step 3.1 - Create sqlalchemy engine to your mysql databas localhost
+engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}"
+                       .format(user="root",
+                               pw="admin123",
+                               db="test123"))
+
+
+###  Step 3.2 - Create a new SCHEMA to put scraped data and Insert whole DataFrame into MySQL
+schemaname = input('schema name is: ')
+engine.execute(CreateSchema(schemaname))
+tablename = input('table name is: ')
+df.to_sql(tablename, con = engine, schema = schemaname, if_exists = 'append', chunksize = 1000, index=False)
+
+
+###  Step 3.3 - Changing sqlalchemy engine to new database for storing new data
+engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}"
+                       .format(user="root",
+                               pw="admin",
+                               db=schemaname))
+
+
+###  Step 3.4 - Using read sql query to retrieve data from database
+query = f'SELECT * FROM `{tablename}`'
+query_df = pd.read_sql_query(query, engine) 
+query_df.info()
+
+
+
+
+
+
+
+
+
