@@ -14,19 +14,3 @@ for i in range(0, numbers_of_quarter*3, 3):
     print(f'{x.year}_Q{x.quarter}  |  Start:{x.date()}  |  End:{y.date()}')
     print('-----------------------------------------------------------') 
 print(f'During the period between {start_date.date()} and {end_date_list[-1].date()}, there are {numbers_of_quarter} quarters in total.')
-
-
-# Random date solution
-
-nubmer_of_random_day = int(input('Number of random day: '))
-start_everyday_list=[]
-for i in range(int(len(start_date_list))):
-    for k in range(nubmer_of_random_day):
-        start_everyday_list.append(radar.random_datetime(start_date_list[i].date()+timedelta(days=1), stop=end_date_list[i].date()-timedelta(days=1)))
-
-print('---------------------------------------------------------------------------------------------------') 
-print(f'| There are {numbers_of_quarter} quarters. For each quarter, there are {nubmer_of_random_day} random days. Total number of days = {len(start_everyday_list)} |')
-print('---------------------------------------------------------------------------------------------------') 
-
-for i in start_everyday_list:
-    print(f'{i.year}_Q{pd.Timestamp(i).quarter}  |  start_date: {i}')
