@@ -1,0 +1,56 @@
+## STEP 4 - SENTIMENT ANALYSIS
+
+
+# Sentiment Analysis
+sentiment_analysis = pipeline(model="finiteautomata/bertweet-base-sentiment-analysis", truncation=True)
+
+# stopwords
+nlp = sp.blank("en")
+stop_words = sp.lang.en.STOP_WORDS
+stop_words = ["https", "co", "RT", "http"] + list(stop_words)
+
+
+## Bertweet model
+# Getting model to analysis tweets and print results
+sentiment = sentiment_analysis(query_df['Tweet'].tolist())
+
+# Make a copy of the original dataframe to secure data integrity
+query_btdf = query_df.copy()
+
+
+
+
+
+# Wordcloud with POSITIVE tweets
+positive_tweets = query_btdf['Tweet'][query_btdf["Sentiment"] == 'POS']
+positive_wordcloud = WordCloud(max_font_size=40, max_words=100, background_color="white", stopwords = stop_words).generate(str(positive_tweets))
+plt.figure()
+plt.title("Positive Tweets - Wordcloud")
+plt.imshow(positive_wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
+
+# Wordcloud with NEUTRAL tweets
+neutral_tweets = query_btdf['Tweet'][query_btdf["Sentiment"] == 'NEU']
+neutral_wordcloud = WordCloud(max_font_size=40, max_words=100, background_color="white", stopwords = stop_words).generate(str(neutral_tweets))
+plt.figure()
+plt.title("Neutral Tweets - Wordcloud")
+plt.imshow(neutral_wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
+
+# Wordcloud with NEGATIVE tweets
+negative_tweets = query_btdf['Tweet'][query_btdf["Sentiment"] == 'NEG']
+negative_wordcloud = WordCloud(max_font_size=40, max_words=100, background_color="white", stopwords = stop_words).generate(str(negative_tweets))
+plt.figure()
+plt.title("Negative Tweets - Wordcloud")
+plt.imshow(negative_wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
+
+
+
+
+
+
+
