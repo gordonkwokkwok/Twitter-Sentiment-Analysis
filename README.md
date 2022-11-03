@@ -5,9 +5,7 @@
 2. Ddesign the SQL server, database schema, tables and entity-relationship model.
 3. Perform sentiment analysis on tweet data.
 
-
-## Prerequisite to use
-### Libraries
+## Library
 Use "!pip install --" command to install the following libraries:
 ```
 !pip install pandas
@@ -42,6 +40,7 @@ The scraped twitter data will be loaded and stored in a MySQL database table:
 - Reply_Count
 
 ## Data Visualisation
+
 ### Pie Chart
 <kbd>
 <img width="325" alt="螢幕截圖 2022-10-09 下午9 25 33" src="https://user-images.githubusercontent.com/112631794/199660414-d526569b-8e9f-4c1c-91c9-da8576d49e67.png">
