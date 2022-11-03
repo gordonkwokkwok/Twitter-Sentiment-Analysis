@@ -5,7 +5,7 @@
 2. Ddesign the SQL server, database schema, tables and entity-relationship model.
 3. Perform sentiment analysis on tweet data.
 
-## Library
+## Prerequisite
 Use "!pip install --" command to install the following libraries:
 ```
 !pip install pandas
